@@ -2,62 +2,46 @@
 
 {% block title %}Order Page{% endblock %}
 
-
 {% block content %}
 
-{% include 'partials/topnav.html' %}
-<!--Table-->
-<div class="container">
+    {% include 'partials/topnav.html' %}
+    <!--Table-->
+ 
     <div class="row my-4">
-        <div class="col-md-4">
-
-        </div>
+        <div class="col-md-4"></div>
         <div class="col-md-8">
             <table class="table bg-white">
-                <thead class="bg-info">
-                    <tr class="text-white">
-                        <th scope="col">#</th>
+                <thead class="bg-info text-white">
+                    <tr>
+ 
                         <th scope="col">Product</th>
                         <th scope="col">Category</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Order by</th>
+                        <th scope="col">Ordered by</th>
+                        <th scope="col">Date</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            Broni
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>
-                            Kenneth
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>
-                            Cecilia
-                        </td>
-                    </tr>
+                    {% for order in orders %}
+                        <tr>
+ 
+                            <td>{{ order.product }}</td>
+                            <td>{{ order.product.category }}</td>
+                            <td>{{ order.order_quantity }}</td>
+                            <td>{{ order.staff.username }}</td>
+                            <td>{{ order.date }}</td>
+
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
 
-</div>
+ 
 
 
 
-<!--End Table-->{% endblock %}
+    <!--End Table-->
+{% endblock %}
