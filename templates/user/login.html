@@ -8,6 +8,9 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-6 offset-md-3">
+                {% for message in messages %}
+                    {% if message %}<div class="alert alert-{{ message.tags }}">{{ message }}</div>{% endif %}
+                {% endfor %}
                 <div class="border p-3 bg-white">
                     <h2>Login Page</h2>
                     <hr>
@@ -15,6 +18,7 @@
                         {% csrf_token %}
                         {{ form|crispy }}
                         <input class="btn btn-success" type="submit" value="Login">
+                        <a class="mx-4" href="{% url 'password_reset' %}">Forgot Password?</a>
                     </form>
                 </div>
             </div>

@@ -40,4 +40,15 @@ urlpatterns = [
         auth_views.LogoutView.as_view(template_name="user/logout.html"),
         name="user-logout",
     ),
+    path(
+        "password_reset/",
+        auth_views.PasswordResetView.as_view(),
+        name="password_reset",
+    ),
+    path(
+        "password_reset_done/",
+        auth_views.PasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
